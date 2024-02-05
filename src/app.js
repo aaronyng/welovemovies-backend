@@ -13,6 +13,14 @@ const theatersRouter = require("./theaters/theaters.router")
 app.use(cors());
 app.use(express.json());
 
+const router = express.Router()
+router.get('/', cors(), (req, res) => {
+  res.json({ message:
+  'Use these routes: /movies, /reviews, /theaters, /reviews/:reviewId, /movies/:movieId, /movies/:movieId/theaters, and /movies/:movieId/reviews.'});
+})
+
+app.use('/', router);
+
 app.use("/movies", moviesRouter);
 app.use("/reviews", reviewsRouter);
 app.use("/theaters", theatersRouter)
